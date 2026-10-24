@@ -22,7 +22,15 @@ public class Fisioterapeuta extends Profissional {
      */
     private double valorBonus() {
         // TODO: percorrer tratamentos e acumular o bônus dos elegíveis
-        return 0.0;
+        double total = 0d;
+
+        for(Tratamento t : tratamentos){
+            if(t.diasAposFinalizacao() <= TEMPO_BONUS){
+                total += (SALARIO_FISIO * BONUS_TRATAMENTO);
+            }
+        }
+
+        return total;
     }
 
     /**
@@ -46,7 +54,10 @@ public class Fisioterapeuta extends Profissional {
     @Override
     public double registrarPagamento() {
         // TODO: calcular total, armazenar em ultimoPagamento e devolver
-        return 0.0;
+        double pagamento = SALARIO_FISIO + valorBonus();
+        setUltimoPagamento(pagamento);
+
+        return getUltimoPagamento();
     }
 
     @Override

@@ -52,4 +52,9 @@ public abstract class Profissional {
     public String toString() {
         return nome + " (" + registro + ") | ultimoPagamento=" + String.format("%.2f", ultimoPagamento);
     }
+
+    public void setUltimoPagamento(double ultimoPagamento) {
+        this.ultimoPagamento = ultimoPagamento;
+    }
+
 }
