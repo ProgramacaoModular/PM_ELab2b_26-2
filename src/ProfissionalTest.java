@@ -1,3 +1,5 @@
+import static org.junit.jupiter.api.Assertions.*;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
@@ -21,4 +23,22 @@ public class ProfissionalTest {
 
     // TODO: criar 2 testes unitários (AAA + mensagem na asserção)
     // TODO: um deles deve testar registrarPagamento
+
+    @Test 
+    void testLimiteAulasAvulsas(){
+        Personal p = new Personal("Matheus Fróes", "POO1");
+
+        assertThrows(IllegalArgumentException.class, () -> {p.addAulaAvulsa(31);
+
+        });
+    }
+
+    @Test 
+    void testRegistrarPagamento(){
+        Personal p = new Personal("Matheus Fróes", "P001");
+
+        p.addAulaAvulsa(5);
+
+        assertEquals(3929.25, p.registrarPagamento(), 0.001);
+    }
 }
